@@ -44,4 +44,17 @@ mod tests {
             println!("{}: {}", key, value);
         }
     }
+    #[test]
+    fn test_hashmap_entry() {
+        let mut h = HashMap::new();
+        h.insert("key", "value");
+        let v = h.entry("key");
+        println!("{:?}", v);
+    }
+    #[test]
+    fn test_vec_to_hashmap() {
+        let v = vec![(1, "one"), (2, "two"), (3, "three")];
+        let h: HashMap<i32, &str> = v.into_iter().collect(); // h 需要指定类型, collect 会把 v 的元素类型推断为 (i32, &str)
+        println!("{:?}", h);
+    }
 }
